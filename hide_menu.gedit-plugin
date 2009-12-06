@@ -1,0 +1,9 @@
+[Gedit Plugin]
+Loader=python
+Module=hide_menu
+IAge=2
+Name=Hide menu
+Description=Hides gedit window menu
+Authors=Konstantin Merenkov <kmerenkov@gmail.com>
+Copyright=Copyright © 2009 Konstantin Merenkov <kmerenkov@gmail.com>
+
