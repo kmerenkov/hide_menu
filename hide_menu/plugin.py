@@ -3,7 +3,8 @@ import gedit
 import gtk
 
 
-HOTKEY = gtk.accelerator_parse("<Ctrl>F10")
+TOGGLE_HOTKEY = gtk.accelerator_parse("<Ctrl>F10")
+STD_MENUBAR_HOTKEY = gtk.accelerator_parse("F10")
 
 
 class HideMenuPlugin(gedit.Plugin):
@@ -48,7 +49,9 @@ class Plugin(object):
             menu.props.visible = not menu.props.visible
 
     def setup_hotkeys(self):
-        self.accel_group.connect_group(HOTKEY[0], HOTKEY[1], 0, lambda _1, _2, _3, _4: self.toggle_visibility())
+        f_toggle = lambda _1, _2, _3, _4: self.toggle_visibility()
+        self.accel_group.connect_group(TOGGLE_HOTKEY[0], TOGGLE_HOTKEY[1], 0, f_toggle)
+        self.accel_group.connect_group(STD_MENUBAR_HOTKEY[0], STD_MENUBAR_HOTKEY[1], 0, f_toggle)
         self.window.add_accel_group(self.accel_group)
 
     def remove_hotkeys(self):
